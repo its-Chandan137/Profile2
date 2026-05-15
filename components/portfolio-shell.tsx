@@ -6,12 +6,14 @@ import {
   Activity,
   ArrowRight,
   Braces,
+  CheckCircle2,
   Cloud,
   Database,
   Download,
   FolderGit2,
   GitBranch,
   Linkedin,
+  Loader2,
   Mail,
   MapPin,
   Menu,
@@ -185,7 +187,7 @@ function SectionHeading({
 export function PortfolioShell() {
   const [activeSection, setActiveSection] = useState("hero");
   const [menuOpen, setMenuOpen] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -196,6 +198,12 @@ export function PortfolioShell() {
     target: timelineRef,
     offset: ["start 75%", "end 45%"],
   });
+
+  useEffect(() => {
+    if (sessionStorage.getItem("contact_sent") === "true") {
+      setStatus("sent");
+    }
+  }, []);
 
   useEffect(() => {
     function updateActiveSection() {
@@ -234,11 +242,37 @@ export function PortfolioShell() {
     };
   }, []);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    console.log("Portfolio contact submission", form);
-    setSubmitted(true);
-    setForm({ name: "", email: "", message: "" });
+    setStatus("sending");
+
+    try {
+      const res = await fetch(
+        `https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            name: form.name,
+            email: form.email,
+            message: form.message,
+          }),
+        },
+      );
+
+      if (res.ok) {
+        setStatus("sent");
+        sessionStorage.setItem("contact_sent", "true");
+        setForm({ name: "", email: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
@@ -676,94 +710,129 @@ export function PortfolioShell() {
               </div>
             </div>
 
-            <motion.form
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.42, ease: "easeOut" }}
-              onSubmit={handleSubmit}
-              className="panel rounded-[2rem] p-6 sm:p-8"
-            >
-              <div className="grid gap-5">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="text-xs uppercase tracking-[0.28em] text-slatecool"
-                  >
-                    Name
-                  </label>
-                  <input
-                    id="name"
-                    value={form.name}
-                    onChange={(event) =>
-                      setForm((current) => ({
-                        ...current,
-                        name: event.target.value,
-                      }))
-                    }
-                    required
-                    className="mt-3 w-full rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white outline-none transition focus:border-ember/40 focus:bg-black/30"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="text-xs uppercase tracking-[0.28em] text-slatecool"
-                  >
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    type="email"
-                    value={form.email}
-                    onChange={(event) =>
-                      setForm((current) => ({
-                        ...current,
-                        email: event.target.value,
-                      }))
-                    }
-                    required
-                    className="mt-3 w-full rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white outline-none transition focus:border-ember/40 focus:bg-black/30"
-                    placeholder="your@email.com"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="text-xs uppercase tracking-[0.28em] text-slatecool"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    value={form.message}
-                    onChange={(event) =>
-                      setForm((current) => ({
-                        ...current,
-                        message: event.target.value,
-                      }))
-                    }
-                    required
-                    rows={6}
-                    className="mt-3 w-full rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white outline-none transition focus:border-ember/40 focus:bg-black/30"
-                    placeholder="Tell me about your infrastructure, deployment, or platform needs."
-                  />
-                </div>
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                  <button
-                    type="submit"
-                    className="inline-flex items-center justify-center gap-2 rounded-full bg-ember px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-charcoal transition hover:-translate-y-0.5 hover:bg-amber-300"
-                  >
-                    Send Message
-                    <ArrowRight size={16} />
-                  </button>
-                  <p className="text-xs uppercase tracking-[0.22em] text-slatecool">
-                    {submitted ? "Logged in console for UI demo." : "UI-only form, no backend attached."}
+            {status === "sent" ? (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.42, ease: "easeOut" }}
+                className="panel rounded-[2rem] p-8"
+              >
+                <div className="flex flex-col items-center justify-center text-center">
+                  <CheckCircle2 size={48} className="text-ember" />
+                  <h3 className="mt-5 text-xl font-semibold text-white">Message Received</h3>
+                  <p className="mt-3 text-slatecool">
+                    Thanks for reaching out — I&apos;ll get back to you soon.
+                  </p>
+                  <p className="mt-4 text-xs text-white/30">
+                    You can send another message in a new browser session.
                   </p>
                 </div>
-              </div>
-            </motion.form>
+              </motion.div>
+            ) : (
+              <motion.form
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.42, ease: "easeOut" }}
+                onSubmit={handleSubmit}
+                className="panel rounded-[2rem] p-6 sm:p-8"
+              >
+                <div className="grid gap-5">
+                  <div>
+                    <label
+                      htmlFor="name"
+                      className="text-xs uppercase tracking-[0.28em] text-slatecool"
+                    >
+                      Name
+                    </label>
+                    <input
+                      id="name"
+                      value={form.name}
+                      onChange={(event) =>
+                        setForm((current) => ({
+                          ...current,
+                          name: event.target.value,
+                        }))
+                      }
+                      required
+                      className="mt-3 w-full rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white outline-none transition focus:border-ember/40 focus:bg-black/30"
+                      placeholder="Your name"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="text-xs uppercase tracking-[0.28em] text-slatecool"
+                    >
+                      Email
+                    </label>
+                    <input
+                      id="email"
+                      type="email"
+                      value={form.email}
+                      onChange={(event) =>
+                        setForm((current) => ({
+                          ...current,
+                          email: event.target.value,
+                        }))
+                      }
+                      required
+                      className="mt-3 w-full rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white outline-none transition focus:border-ember/40 focus:bg-black/30"
+                      placeholder="your@email.com"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="message"
+                      className="text-xs uppercase tracking-[0.28em] text-slatecool"
+                    >
+                      Message
+                    </label>
+                    <textarea
+                      id="message"
+                      value={form.message}
+                      onChange={(event) =>
+                        setForm((current) => ({
+                          ...current,
+                          message: event.target.value,
+                        }))
+                      }
+                      required
+                      rows={6}
+                      className="mt-3 w-full rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white outline-none transition focus:border-ember/40 focus:bg-black/30"
+                      placeholder="Tell me about your infrastructure, deployment, or platform needs."
+                    />
+                  </div>
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                    <button
+                      type="submit"
+                      disabled={status === "sending"}
+                      className="inline-flex items-center justify-center gap-2 rounded-full bg-ember px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-charcoal transition hover:-translate-y-0.5 hover:bg-amber-300"
+                    >
+                      {status === "sending" ? (
+                        <>
+                          Sending…
+                          <Loader2 size={16} className="animate-spin" />
+                        </>
+                      ) : (
+                        <>
+                          Send Message
+                          <ArrowRight size={16} />
+                        </>
+                      )}
+                    </button>
+                  </div>
+                  {status === "error" ? (
+                    <p className="mt-2 text-xs text-red-400">
+                      Something went wrong. Try emailing directly at
+                      {" "}
+                      wayalabhishek47@gmail.com
+                    </p>
+                  ) : null}
+                </div>
+              </motion.form>
+            )}
           </div>
         </div>
       </section>
