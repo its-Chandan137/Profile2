@@ -7,7 +7,7 @@ const syne = Syne({
   variable: "--font-syne",
   display: "swap",
 });
-
+ 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains",
