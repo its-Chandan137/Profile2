@@ -377,7 +377,7 @@ export function PortfolioShell() {
                 <ArrowRight size={16} />
               </a>
               <a
-                href="/abhishek-wayal-resume.txt"
+                href="/AbhishekW_cv(Devops-engineer).pdf"
                 download
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm uppercase tracking-[0.2em] text-white transition hover:border-ember/60 hover:bg-white/5"
               >
