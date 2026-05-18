@@ -304,7 +304,7 @@ export function PortfolioShell() {
               href="#hero"
               className="font-heading text-sm uppercase tracking-[0.4em] text-white transition hover:text-ember"
             >
-              C.SWARNAKAR
+              CHANDAN.S
             </a>
 
             <button
