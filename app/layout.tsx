@@ -15,9 +15,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Abhishek Wayal | DevOps Engineer",
+  title: "Chandan Swarnakar | Frontend Developer",
   description:
-    "Portfolio of Abhishek Wayal, a DevOps Engineer focused on cloud-native infrastructure, CI/CD, Kubernetes, and observability across Azure and AWS.",
+    "Frontend Developer with 2+ years in React, Angular, and JavaScript. Building real-time, responsive web applications across healthcare, government, and ed-tech domains.",
 };
 
 export default function RootLayout({
