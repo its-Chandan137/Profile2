@@ -350,7 +350,7 @@ export function PortfolioShell() {
         </div>
       </motion.header>
 
-      <section id="hero" className="section-shell flex min-h-screen items-center pt-28 pb-16">
+      <section id="hero" className="section-shell flex min-h-screen items-center pb-16 pt-24 sm:pt-28">
         <div className="grid w-full gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <motion.div
             initial="hidden"
@@ -381,7 +381,7 @@ export function PortfolioShell() {
                 show: { y: 0, opacity: 1 },
               }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="mt-5 max-w-4xl font-heading text-5xl uppercase leading-[0.88] tracking-[0.12em] text-white sm:text-6xl lg:text-7xl"
+              className="mt-5 max-w-4xl font-heading text-4xl uppercase leading-[0.92] tracking-[0.08em] text-white sm:text-6xl sm:leading-[0.88] sm:tracking-[0.12em] lg:text-7xl"
             >
               Chandan Swarnakar
             </motion.h1>
@@ -446,20 +446,20 @@ export function PortfolioShell() {
             >
               <a
                 href="mailto:chandanswarnakar13@gmail.com"
-                className="flex items-center gap-3 rounded-2xl border border-white/5 bg-white/[0.03] px-4 py-3 transition hover:border-ember/30 hover:bg-white/[0.06]"
+                className="flex min-w-0 items-center gap-3 rounded-2xl border border-white/5 bg-white/[0.03] px-4 py-3 transition hover:border-ember/30 hover:bg-white/[0.06]"
               >
-                <Mail size={16} className="text-ember" />
-                chandanswarnakar13@gmail.com
+                <Mail size={16} className="flex-none text-ember" />
+                <span className="break-all">chandanswarnakar13@gmail.com</span>
               </a>
               <a
                 href="tel:+917327020994"
                 className="flex items-center gap-3 rounded-2xl border border-white/5 bg-white/[0.03] px-4 py-3 transition hover:border-ember/30 hover:bg-white/[0.06]"
               >
-                <Phone size={16} className="text-ember" />
+                <Phone size={16} className="flex-none text-ember" />
                 +91 7327020994
               </a>
               <div className="flex items-center gap-3 rounded-2xl border border-white/5 bg-white/[0.03] px-4 py-3">
-                <MapPin size={16} className="text-ember" />
+                <MapPin size={16} className="flex-none text-ember" />
                 Hyderabad, India
               </div>
               <a
@@ -468,7 +468,7 @@ export function PortfolioShell() {
                 rel="noreferrer"
                 className="flex items-center gap-3 rounded-2xl border border-white/5 bg-white/[0.03] px-4 py-3 transition hover:border-ember/30 hover:bg-white/[0.06]"
               >
-                <Linkedin size={16} className="text-ember" />
+                <Linkedin size={16} className="flex-none text-ember" />
                 LinkedIn
               </a>
             </motion.div>
@@ -596,7 +596,7 @@ export function PortfolioShell() {
                     transition={{ duration: 0.45, delay: index * 0.08, ease: "easeOut" }}
                     className="panel relative rounded-[1.75rem] p-6 sm:p-8"
                   >
-                    <div className="absolute left-[-27px] top-8 h-4 w-4 rounded-full border-2 border-charcoal bg-ember shadow-[0_0_18px_rgba(245,158,11,0.9)] sm:left-[-31px]" />
+                    <div className="absolute left-[-25px] top-8 h-4 w-4 rounded-full border-2 border-charcoal bg-ember shadow-[0_0_18px_rgba(245,158,11,0.9)] sm:left-[-31px]" />
                     <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
                       <div>
                         <p className="section-kicker">{item.period}</p>
@@ -644,7 +644,7 @@ export function PortfolioShell() {
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(245,158,11,0.18),transparent_36%)] opacity-0 transition group-hover:opacity-100" />
                 <div className="relative">
                   <p className="section-kicker">Case Study {String(index + 1).padStart(2, "0")}</p>
-                  <h3 className="mt-4 font-heading text-3xl uppercase tracking-[0.14em] text-white">
+                  <h3 className="mt-4 font-heading text-2xl uppercase tracking-[0.1em] text-white sm:text-3xl sm:tracking-[0.14em]">
                     {project.title}
                   </h3>
                   <p className="mt-2 text-sm uppercase tracking-[0.22em] text-ember">
@@ -686,7 +686,7 @@ export function PortfolioShell() {
           >
             <div>
               <p className="section-kicker">{education.period}</p>
-              <h3 className="mt-3 font-heading text-3xl uppercase tracking-[0.15em] text-white">
+              <h3 className="mt-3 font-heading text-2xl uppercase tracking-[0.1em] text-white sm:text-3xl sm:tracking-[0.15em]">
                 {education.degree}
               </h3>
               <p className="mt-2 text-sm uppercase tracking-[0.22em] text-ember">{education.school}</p>
@@ -720,16 +720,16 @@ export function PortfolioShell() {
                       href={item.href}
                       target={item.href.startsWith("http") ? "_blank" : undefined}
                       rel={item.href.startsWith("http") ? "noreferrer" : undefined}
-                      className="flex items-center gap-4 rounded-[1.4rem] border border-white/10 bg-white/[0.04] px-4 py-4 transition hover:border-ember/35 hover:bg-white/[0.08]"
+                      className="flex min-w-0 items-center gap-4 rounded-[1.4rem] border border-white/10 bg-white/[0.04] px-4 py-4 transition hover:border-ember/35 hover:bg-white/[0.08]"
                     >
-                      <span className="rounded-2xl border border-ember/25 bg-ember/10 p-3 text-ember">
+                      <span className="flex-none rounded-2xl border border-ember/25 bg-ember/10 p-3 text-ember">
                         <Icon size={18} />
                       </span>
-                      <span>
+                      <span className="min-w-0">
                         <span className="block text-xs uppercase tracking-[0.28em] text-slatecool">
                           {item.label}
                         </span>
-                        <span className="mt-1 block text-sm text-white">{item.value}</span>
+                        <span className="mt-1 block break-all text-sm text-white sm:break-normal">{item.value}</span>
                       </span>
                     </a>
                   );
