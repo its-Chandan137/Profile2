@@ -17,7 +17,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Chandan Swarnakar | Frontend Developer",
   description:
-    "Frontend Developer with 2+ years in React, Angular, and JavaScript. Building real-time, responsive web applications across healthcare, government, and ed-tech domains.",
+    "Frontend Developer with nearly 3 years of experience building production React, Next.js, Angular, and TypeScript applications across healthcare, ed-tech, government, and SaaS domains.",
 };
 
 export default function RootLayout({

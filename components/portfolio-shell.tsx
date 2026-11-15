@@ -9,6 +9,7 @@ import {
   Download,
   FolderGit2,
   GitBranch,
+  Globe,
   Linkedin,
   Loader2,
   Mail,
@@ -49,102 +50,104 @@ const skills = [
   {
     title: "Frontend",
     icon: PanelsTopLeft,
-    items: ["JavaScript", "React", "HTML", "CSS", "SCSS", "Bootstrap", "Tailwind"],
+    items: [
+      "React.js",
+      "Next.js 14",
+      "Redux Toolkit",
+      "Tailwind CSS",
+      "SCSS",
+      "Bootstrap",
+      "Angular",
+      "NgRx",
+      "RxJS",
+    ],
   },
   {
-    title: "Frameworks",
+    title: "Languages",
     icon: Blocks,
-    items: ["Angular"],
+    items: ["JavaScript (ES6+)", "TypeScript", "HTML5", "CSS3", "SQL"],
   },
   {
-    title: "State Management",
+    title: "Backend & Data",
     icon: GitBranch,
-    items: ["Redux", "NgRx"],
+    items: ["Node.js", "REST APIs", "PostgreSQL", "Prisma ORM"],
   },
   {
-    title: "Real-Time",
+    title: "Real-Time & AI",
     icon: Radio,
-    items: ["Socket.io", "WebSocket"],
+    items: ["Socket.IO", "WebSocket", "Server-Sent Events (SSE)", "LiveKit", "OpenAI API", "RAG"],
   },
   {
-    title: "Tools & Others",
+    title: "Tools & Integrations",
     icon: Wrench,
-    items: ["Git", "Vite", "REST APIs", "Google APIs", "Razorpay"],
+    items: ["Git", "Vite", "Google APIs", "Razorpay"],
   },
 ];
 
 const experience = [
   {
-    company: "Vedhas Technology Solutions Pvt. Ltd",
+    company: "Vedhas Technology Solutions",
     role: "Frontend Developer",
     period: "Dec 2023 - Present",
     highlights: [
-      "Delivered full-scale frontend modules across 8+ production projects spanning React and Angular.",
-      "Built and maintained complex UI architectures including dynamic multi-role forms, real-time chat, design systems, and dashboard interfaces.",
-      "Worked extensively on Angular + NgRx for a large government-facing NOC management system in Dubai, handling store management, bug resolution, and API integration.",
-      "Mentored a junior developer for ~2 months, assigning tasks and reviewing work.",
+      "Building production React, Next.js, and Angular applications in TypeScript across healthcare, ed-tech, government, and SaaS domains.",
+      "Developing reusable UI systems, complex state management with Redux Toolkit and NgRx, and real-time interfaces using Socket.IO and SSE.",
+      "Delivering full-stack features with Node.js and PostgreSQL, and integrating OpenAI API and RAG-based capabilities into user-facing products.",
     ],
   },
 ];
 
 const projects = [
   {
-    title: "RTA e-NOC System (Dubai Government)",
-    subtitle: "Dubai Infrastructure Clearance Platform",
+    title: "LeadPilot AI",
+    subtitle: "AI Voice and Chat Lead-Generation Platform (Vedhas project)",
     description:
-      "Owned ~1 year of frontend on a Dubai govt internal app, engineering NgRx store management, API integration, and backend data syncing for NOC infrastructure applications. Single-handedly resolved all frontend bugs for 4+ months after team reduction, independently maintaining majority of the frontend.",
-    tags: ["Angular", "NgRx", "REST APIs"],
+      "Built an embeddable chat and voice widget that uses RAG over business knowledge to answer visitor questions and convert conversations into CRM leads. Engineered low-latency voice streaming with LiveKit and OpenAI TTS over SSE, including speech-to-text normalization for spoken emails and phone numbers. Designed a conversation-scoped, idempotent lead model to prevent duplicates, with calls and leads visible in a dashboard.",
+    tags: ["Next.js 14", "TypeScript", "Node.js", "PostgreSQL", "Prisma", "LiveKit", "OpenAI API", "SSE"],
   },
   {
-    title: "Fretbox / Internbox",
+    title: "FretBox / InternBox",
     subtitle: "Hostel Management SaaS",
     description:
-      "Engineered a full real-time chat system from scratch - Socket.io frontend + backend, file uploads, online/offline status, read receipts, and student-to-management flows. Identified and resolved numerous pre-existing bugs across the platform alongside active feature development.",
-    tags: ["React", "Socket.io", "Redux", "SCSS"],
+      "Built a real-time chat system from scratch with Socket.IO, covering the frontend and backend, file uploads, online/offline status, read receipts, and student-to-management request flows. Identified and fixed numerous pre-existing platform bugs alongside feature development.",
+    tags: ["React", "Socket.IO", "Redux", "SCSS"],
   },
   {
     title: "Thrivent / Rightwise Prep",
     subtitle: "US Ed-Tech Portal",
     description:
-      "Architected a comprehensive design system covering colors, typography, forms, modals, dashboards, sidebars, and more; delivered all frontend pages including auth flows. Spearheaded frontend alongside a senior lead and onboarded a junior intern into the workflow.",
+      "Built a design system covering colors, typography, forms, modals, dashboards, and sidebars, and implemented all frontend pages, including authentication flows. Co-led frontend development with a senior lead and worked alongside a junior intern.",
     tags: ["React", "Vite", "SCSS"],
   },
   {
     title: "Smart Health Assist",
     subtitle: "Healthcare Platform",
     description:
-      "Developed almost all UI pages - appointment booking, medicine purchase, and real-time patient monitoring with partner/nurse data entry and per-patient report storage. Implemented tracking where patients are monitored via devices or manually by partners, nurses, or closed ones.",
+      "Built most UI pages, including appointment booking, medicine purchase, patient status monitoring, partner and nurse data entry, and per-patient report storage.",
     tags: ["React", "REST APIs"],
   },
   {
     title: "Amplify Infra",
     subtitle: "Construction Management App",
     description:
-      "Delivered GPS-based attendance verification, travel allowance tracking, and floor-wise portion planning features using Google APIs. Architected complex multi-role dynamic forms across a heavily legacy codebase.",
-    tags: ["React", "Redux", "Google APIs", "Bootstrap"],
+      "Built GPS-based attendance, travel allowance tracking, and floor-wise portion planning features. Architected complex multi-role dynamic forms across a legacy codebase.",
+    tags: ["React", "Redux", "Google APIs"],
   },
   {
-    title: "Meal O'Clock",
-    subtitle: "Tiffin Subscription Service",
+    title: "RTA e-NOC System",
+    subtitle: "Dubai Government Infrastructure Clearance Portal",
     description:
-      "Built end-to-end as one of two developers - meal plan selection, subscription management (monthly/3/6-month), pause/resume logic, and Razorpay payment integration. Complete flow from landing page to payment with zero frameworks used.",
-    tags: ["Vanilla JS", "HTML", "CSS", "Razorpay"],
-  },
-  {
-    title: "Vibhu",
-    subtitle: "Internal Enterprise App",
-    description:
-      "First production React project - built the complete authentication system and OTP-based secure folder structure for sensitive documents. Established a scalable 3-layer folder architecture adopted by the whole team.",
-    tags: ["React", "Redux", "SCSS", "Bootstrap"],
+      "Owned Angular and NgRx store architecture, API integration, and backend data synchronization for a Dubai government NOC application used for infrastructure projects. Kept the frontend running independently for 4+ months after a team reduction, resolving issues and owning most frontend work.",
+    tags: ["Angular", "NgRx"],
   },
 ];
 
 const contactLinks = [
   {
     label: "Email",
-    href: "mailto:itschandan137@gmail.com",
+    href: "mailto:chandanswarnakar13@gmail.com",
     icon: Mail,
-    value: "itschandan137@gmail.com",
+    value: "chandanswarnakar13@gmail.com",
   },
   {
     label: "Phone",
@@ -158,27 +161,25 @@ const contactLinks = [
     icon: Linkedin,
     value: "linkedin.com/in/chandanswarnakar",
   },
+  {
+    label: "GitHub",
+    href: "https://github.com/its-Chandan137",
+    icon: FolderGit2,
+    value: "github.com/its-Chandan137",
+  },
+  {
+    label: "Portfolio",
+    href: "https://chandansportfolio.vercel.app",
+    icon: Globe,
+    value: "chandansportfolio.vercel.app",
+  },
 ];
 
 const education = {
-  period: "2019 - 2021",
-  degree: "B.Tech",
+  period: "2021",
+  degree: "B.Tech in Computer Science",
   school: "Biju Patnaik University of Technology",
   cgpa: "8.2",
-  secondary: [
-    {
-      period: "2017",
-      degree: "Class XII",
-      school: "GHVM Jharsuguda, Odisha",
-      cgpa: "6.4",
-    },
-    {
-      period: "2015",
-      degree: "Class XI",
-      school: "Prabhujee EM School, Odisha",
-      cgpa: "8.6",
-    },
-  ],
 };
 
 function SectionHeading({
@@ -396,7 +397,7 @@ export function PortfolioShell() {
                 Frontend Developer
               </span>
               <span className="rounded-full border border-white/10 px-4 py-2 text-xs uppercase tracking-[0.35em] text-slatecool">
-                React · Angular · JavaScript · Socket.io
+                React · Next.js · TypeScript · Angular
               </span>
             </motion.div>
             <motion.p
@@ -407,8 +408,9 @@ export function PortfolioShell() {
               transition={{ duration: 0.55, ease: "easeOut" }}
               className="mt-8 max-w-2xl text-base leading-8 text-slatecool sm:text-lg"
             >
-              Building responsive, real-time web applications end-to-end. 2+ years across
-              government, healthcare, ed-tech, and SaaS domains.
+              Frontend Developer with nearly 3 years of experience building production React,
+              Next.js, and Angular applications in TypeScript across healthcare, ed-tech,
+              government, and SaaS domains.
             </motion.p>
             <motion.div
               variants={{
@@ -426,7 +428,7 @@ export function PortfolioShell() {
                 <ArrowRight size={16} />
               </a>
               <a
-                href="/resume.pdf"
+                href="/Chandan_Frontend_Developer.pdf"
                 download
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm uppercase tracking-[0.2em] text-white transition hover:border-ember/60 hover:bg-white/5"
               >
@@ -443,11 +445,11 @@ export function PortfolioShell() {
               className="mt-10 grid gap-3 border-t border-white/10 pt-6 text-sm text-slatecool sm:grid-cols-2"
             >
               <a
-                href="mailto:itschandan137@gmail.com"
+                href="mailto:chandanswarnakar13@gmail.com"
                 className="flex items-center gap-3 rounded-2xl border border-white/5 bg-white/[0.03] px-4 py-3 transition hover:border-ember/30 hover:bg-white/[0.06]"
               >
                 <Mail size={16} className="text-ember" />
-                itschandan137@gmail.com
+                chandanswarnakar13@gmail.com
               </a>
               <a
                 href="tel:+917327020994"
@@ -491,19 +493,19 @@ export function PortfolioShell() {
                   React
                 </div>
                 <div className="absolute left-1/2 top-[18%] -translate-x-1/2 rounded-full border border-white/10 bg-black/20 px-3 py-2 text-[10px] uppercase tracking-[0.35em] text-slatecool">
-                  ThreeJS
+                  Next.js
                 </div>
                 <div className="absolute right-8 top-1/4 rounded-full border border-white/10 bg-black/20 px-3 py-2 text-[10px] uppercase tracking-[0.35em] text-amber-100/70">
-                  Angular
+                  TypeScript
                 </div>
                 <div className="absolute right-10 top-[56%] rounded-full border border-white/10 bg-black/20 px-3 py-2 text-[10px] uppercase tracking-[0.35em] text-slatecool">
-                  Socket.io
+                  Node.js
                 </div>
                 <div className="absolute bottom-20 left-8 rounded-full border border-white/10 bg-black/20 px-3 py-2 text-[10px] uppercase tracking-[0.35em] text-slatecool">
-                  NgRx
+                  Angular
                 </div>
                 <div className="absolute bottom-7 right-7 rounded-full border border-white/10 bg-black/20 px-3 py-2 text-[10px] uppercase tracking-[0.35em] text-slatecool">
-                  Redux
+                  AI / RAG
                 </div>
               </div>
             </div>
@@ -519,7 +521,7 @@ export function PortfolioShell() {
           <SectionHeading
             kicker="SKILLS"
             title="TOOLS I REACH FOR"
-            copy="From component architecture and state management to real-time systems and design implementation, this stack is organized around building fast, reliable, and scalable frontend applications."
+            copy="From frontend architecture and state management to real-time systems, backend integration, and AI-powered features, this stack reflects how I build production web applications."
           />
           <div className="relative mt-14 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {skills.map((skill, index) => {
@@ -570,7 +572,7 @@ export function PortfolioShell() {
           <SectionHeading
             kicker="EXPERIENCE"
             title="WORK TIMELINE"
-            copy="Frontend development role at a product company, delivering production-grade web applications across multiple domains and tech stacks."
+            copy="Frontend development role delivering production web applications across healthcare, ed-tech, government, and SaaS domains."
           />
           <div ref={timelineRef} className="relative mt-16 grid gap-10 lg:grid-cols-[140px_1fr]">
             <div className="hidden lg:block">
@@ -627,7 +629,7 @@ export function PortfolioShell() {
           <SectionHeading
             kicker="PROJECTS"
             title="SELECTED WORK"
-            copy="Production projects across government, healthcare, ed-tech, construction, and SaaS domains."
+            copy="Production projects across healthcare, ed-tech, government, and SaaS, including AI-powered and real-time experiences."
           />
           <div className="mt-14 grid gap-6 lg:grid-cols-2">
             {projects.map((project, index) => (
@@ -673,7 +675,7 @@ export function PortfolioShell() {
           <SectionHeading
             kicker="EDUCATION"
             title="ACADEMIC FOUNDATION"
-            copy="A strong computer science foundation supporting practical frontend development, system design, and modern web engineering."
+            copy="A strong computer science foundation supporting frontend development, system thinking, and modern web engineering."
           />
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -688,25 +690,6 @@ export function PortfolioShell() {
                 {education.degree}
               </h3>
               <p className="mt-2 text-sm uppercase tracking-[0.22em] text-ember">{education.school}</p>
-              <div className="mt-6 space-y-4 border-t border-white/10 pt-5">
-                {education.secondary.map((item) => (
-                  <div
-                    key={`${item.degree}-${item.period}`}
-                    className="flex flex-col gap-1 text-sm text-slatecool sm:flex-row sm:items-center sm:justify-between sm:gap-8"
-                  >
-                    <div>
-                      <p className="text-xs uppercase tracking-[0.22em] text-white/70">{item.period}</p>
-                      <p className="mt-1 uppercase tracking-[0.16em] text-white">{item.degree}</p>
-                      <p className="mt-1 text-xs uppercase tracking-[0.16em] text-ember">
-                        {item.school}
-                      </p>
-                    </div>
-                    <p className="text-xs uppercase tracking-[0.22em] text-slatecool">
-                      CGPA: <span className="text-white">{item.cgpa}</span>
-                    </p>
-                  </div>
-                ))}
-              </div>
             </div>
             <div className="rounded-[1.6rem] border border-white/10 bg-black/20 px-6 py-4 text-left sm:text-right">
               <p className="text-xs uppercase tracking-[0.25em] text-slatecool">CGPA</p>
@@ -735,8 +718,8 @@ export function PortfolioShell() {
                     <a
                       key={item.label}
                       href={item.href}
-                      target={item.label === "LinkedIn" ? "_blank" : undefined}
-                      rel={item.label === "LinkedIn" ? "noreferrer" : undefined}
+                      target={item.href.startsWith("http") ? "_blank" : undefined}
+                      rel={item.href.startsWith("http") ? "noreferrer" : undefined}
                       className="flex items-center gap-4 rounded-[1.4rem] border border-white/10 bg-white/[0.04] px-4 py-4 transition hover:border-ember/35 hover:bg-white/[0.08]"
                     >
                       <span className="rounded-2xl border border-ember/25 bg-ember/10 p-3 text-ember">
@@ -870,7 +853,7 @@ export function PortfolioShell() {
                   {status === "error" ? (
                     <p className="mt-2 text-xs text-red-400">
                       Something went wrong. Try emailing directly at{" "}
-                      itschandan137@gmail.com
+                      chandanswarnakar13@gmail.com
                     </p>
                   ) : null}
                 </div>
@@ -883,7 +866,7 @@ export function PortfolioShell() {
       <footer className="section-shell pb-10">
         <div className="flex flex-col gap-3 border-t border-white/10 pt-6 text-xs uppercase tracking-[0.22em] text-slatecool sm:flex-row sm:items-center sm:justify-between">
           <p>Chandan Swarnakar</p>
-          <p>Cloud-native infrastructure → Frontend Development · Real-time Systems · Angular · React</p>
+          <p>Frontend Development · React · Next.js · TypeScript · Real-time & AI</p>
           <p className="inline-flex items-center gap-2">
             <FolderGit2 size={14} />
             Next.js 14 + Three.js + Framer Motion
